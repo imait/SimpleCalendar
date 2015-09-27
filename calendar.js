@@ -48,14 +48,50 @@ function set_value(targetid, value) {
 
 // class SimpleCalendar
 
-function getCalendarElement() {
+function SimpleCalendar(myid, targetid, datestring) {
+    this.id = myid;
+    this.target = targetid;
+    this.datestring = datestring;
+
+    if (datestring == undefined) {
+	datestring = new Date();
+	datestring = datestring.getFullYear() + '/' + 
+	    ('00' + (datestring.getMonth() + 1)).slice(-2) + '/' + 
+	    ('00' + datestring.getDate()).slice(-2);
+    }
+    datestring = datestring.replace('-', '/');
+
+    if (datestring.match(/^\d{4}\/\d{1,2}$/)) {
+	datestring += '/01';
+    }
+
+    if (datestring.match(/^\d{4}\/\d{1,2}\/\d{1,2}$/)) {
+	d = datestring.split('/');
+	dt = new Date(d[0], d[1] - 1, d[2]);
+    } else {
+	dt = new Date();
+    }
+
+    this.datetime = dt;
+    this.calendarElement = undefined;
+}
+
+SimpleCalendar.prototype.id;
+SimpleCalendar.prototype.target;
+SimpleCalendar.prototype.datestring;
+SimpleCalendar.prototype.datetime;
+SimpleCalendar.prototype.calendarElement;
+SimpleCalendar.prototype.days = new Array('日', '月', '火', '水', '木', '金', '土');
+
+
+SimpleCalendar.prototype.getCalendarElement = function() {
     if (this.calendarElement == undefined) {
 	this.createCalendar()
     }
     return this.calendarElement;
 }
 
-function getYearMonthString(offset) {
+SimpleCalendar.prototype.getYearMonthString = function(offset) {
     if (offset == undefined) {
 	offset = 0;
     }
@@ -63,7 +99,7 @@ function getYearMonthString(offset) {
     return this.datetime.getFullYear() + '-' + ('00' + (this.datetime.getMonth() + offset)).slice(-2);
 }
 
-function createCalendar() {
+SimpleCalendar.prototype.createCalendar = function() {
     this.calendarElement = document.createElement('div');
     this.calendarElement.setAttribute('id', 'CALENDAR_' + this.id);
 
@@ -180,36 +216,3 @@ function createCalendar() {
     this.calendarElement.appendChild(table);
 }
 
-function SimpleCalendar(myid, targetid, datestring) {
-    this.id = myid;
-    this.target = targetid;
-    this.datestring = datestring;
-
-    if (datestring == undefined) {
-	datestring = new Date();
-	datestring = datestring.getFullYear() + '/' + 
-	    ('00' + (datestring.getMonth() + 1)).slice(-2) + '/' + 
-	    ('00' + datestring.getDate()).slice(-2);
-    }
-    datestring = datestring.replace('-', '/');
-
-    if (datestring.match(/^\d{4}\/\d{1,2}$/)) {
-	datestring += '/01';
-    }
-
-    if (datestring.match(/^\d{4}\/\d{1,2}\/\d{1,2}$/)) {
-	d = datestring.split('/');
-	dt = new Date(d[0], d[1] - 1, d[2]);
-    } else {
-	dt = new Date();
-    }
-
-    this.datetime = dt;
-    this.calendarElement = undefined;
-    this.days = new Array('日', '月', '火', '水', '木', '金', '土');
-}
-
-new SimpleCalendar()
-SimpleCalendar.prototype.createCalendar = createCalendar;
-SimpleCalendar.prototype.getCalendarElement = getCalendarElement;
-SimpleCalendar.prototype.getYearMonthString = getYearMonthString;
