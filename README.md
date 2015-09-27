@@ -20,6 +20,10 @@ the function *open_calendar()* needs three parameters.
     <span onClick="open_calendar('CAL', 'TEST', event)">カレンダー</span>
     </body>
 
+## Link
+
+* [Demonstration page](http://www.kototone.jp/com/about_simplecalendar.html "日付入力をサポートするSimpleCalendar")
+
 ## Author
 
 * IMAI Toshiyuki
