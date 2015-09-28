@@ -5,9 +5,9 @@
 // The programme SimpleCalendar provides simple calendar tool, which assists 
 // to input the date string into HTML form.
 // 
-// Copyright (c) 2015 IMAI Toshiyuki
-// 
 // Author: 2015 IMAI Toshiyuki
+// 
+// Copyright (c) 2015 IMAI Toshiyuki
 // 
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
