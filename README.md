@@ -27,3 +27,7 @@ the function *open_calendar()* needs three parameters.
 ## Author
 
 * IMAI Toshiyuki
+
+Copyright (c) 2015 IMAI Toshiyuki
+
+This software is released under the MIT License, see LICENSE.
