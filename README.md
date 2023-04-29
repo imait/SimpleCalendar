@@ -22,7 +22,7 @@ the function *open_calendar()* needs three parameters.
 
 ## Link
 
-* [Demonstration page](http://www.kototone.jp/com/about_simplecalendar.html "日付入力をサポートするSimpleCalendar")
+* [Demonstration page](http://imait.github.io/SimpleCalendar/ "SimpleCalendar Demo Page")
 
 ## Author
 
